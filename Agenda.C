@@ -39,9 +39,9 @@ int main(void) // programa principal a ser trabalhado contendo while e switch
 
 void menu()
 {
-    printf("                                     *AGENDA*                                                       \n");
-    printf("_____________________________________________________________________________________________________\n\n");
-    printf(">>>>>>>>>>>MENU<<<<<<<<\n\n");
+    printf("                             *AGENDA*                                            \n");
+    printf("__________________________________________________________________ ______________\n\n");
+    printf(">>>>>>>>>>> MENU <<<<<<<<\n\n");
     printf("1 - Cadastro\n");
     printf("2 - Listar\n");
     printf("3 - Buscar\n");
