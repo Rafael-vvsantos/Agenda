@@ -16,7 +16,7 @@ typedef struct Pessoa          //criando a lista e já definindo novo dado como 
 void menu(); //menu feito
 void cadastro();
 
-int main(void) // programa principal a ser trabalhado
+int main(void) // programa principal a ser trabalhado contendo while e switch
 {
 
     int opcao;
@@ -39,7 +39,8 @@ int main(void) // programa principal a ser trabalhado
 
 void menu()
 {
-    printf("******************************************A genda *****************************************************\n\n");
+    printf("                                     *AGENDA*                                                       \n");
+    printf("_____________________________________________________________________________________________________\n\n");
     printf(">>>>>>>>>>>MENU<<<<<<<<\n\n");
     printf("1 - Cadastro\n");
     printf("2 - Listar\n");
@@ -71,7 +72,7 @@ void cadastro() //Cadastramentos do dos nomes, zerando todas a posições e segu
         {
             do
             {
-                printf("Digite novamente o codigo:");
+                printf("Digite codigo:");
                 scanf("%d", &contato[i].codigo);
             } while (contato[i].codigo < 1);
 
