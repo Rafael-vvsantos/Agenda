@@ -17,6 +17,7 @@ void menu(); //menu feito
 void cadastro();
 void listar();
 void buscar();
+void alterar();
 
 Pessoa contato[Tamanho_Vetor_Pessoa];
 int numero_de_contatos = 0, i;
@@ -49,16 +50,20 @@ int main(void) // programa principal a ser trabalhado contendo while e switch
         case 3:
             buscar();
             break;
+
+        case 4:
+            alterar();
+            break;
         }
     }
 }
 
 void menu()
 {
-    printf(" ________________________________________________________________________________\n");
-    printf("|                                                                                |\n");
-    printf("|                               AGENDA                                           |\n");
-    printf("|________________________________________________________________________________|\n\n");
+    printf(" _______________________________________________________________________________\n");
+    printf("|                                                                               |\n");
+    printf("|                               AGENDA                                          |\n");
+    printf("|_______________________________________________________________________________|\n\n");
 
     printf(" ___________________________\n");
     printf("|                           |\n");
@@ -118,7 +123,7 @@ void cadastro() //Cadastramentos do dos nomes, zerando todas a posições e segu
     }
 }
 
-void listar() //imprime uma lista de todos os contatos da cadastrado na agenda
+void listar()//imprime uma lista de todos os contatos da cadastrado na agenda 
 {
     printf(" ________________________________________________________________________________\n");
     printf("|                                                                                |\n");
@@ -153,9 +158,9 @@ void listar() //imprime uma lista de todos os contatos da cadastrado na agenda
     scanf("%i", &voltar);
 }
 
-void buscar() // verifica se existe o nome/nome iguais, se estiver imprimi os dados na tela se não informa a usuario que não existe
+void buscar() // verifica se existe o nome/nome iguais, se estiver imprimi os dados na tela se não informa a usuario que não existe 
 {
-    int codigo_de_busca = 0, tipo_busca = 0;
+    int codigo_de_busca = 0, tipo_busca = 0 ;
     char nome_da_busca[50];
 
     printf(" ________________________________________________________________________________\n");
@@ -172,30 +177,31 @@ void buscar() // verifica se existe o nome/nome iguais, se estiver imprimi os da
     printf("|___________________________|\n\n");
 
     printf("Escolha uma opcao : ");
-    scanf("%d", &tipo_busca);
+    scanf("%i" , &tipo_busca);
 
     switch (tipo_busca)
     {
     case 1:
         printf("Informe o codigo : ");
-        scanf("%d", &codigo_de_busca);
+        scanf("%i" , &codigo_de_busca);
         break;
-
+    
     case 2:
         printf("Informe o nome : ");
-        scanf("%s", nome_da_busca);
+        scanf("%s" , nome_da_busca);
         break;
-
+    
     default:
         printf("Opcao inválida!");
         break;
     }
 
+
     printf(" ______________________________________________________\n\n");
 
-    for (i = 0; i < Tamanho_Vetor_Pessoa; i++)
+    for (i = 0; i < Tamanho_Vetor_Pessoa; i++ )
     {
-        if ((codigo_de_busca == contato[i].codigo) || (strcmp(nome_da_busca, contato[i].nome_completo) == 0)) //strcmp faz a comparação da strings
+        if ((codigo_de_busca == contato[i].codigo) || (strcmp(nome_da_busca, contato[i].nome_completo) == 0 ))//strcmp faz a comparação da strings
         {
             printf("Codigo : %i\n", contato[i].codigo);
 
@@ -208,7 +214,7 @@ void buscar() // verifica se existe o nome/nome iguais, se estiver imprimi os da
             printf("Data de Nascimento :%s\n", contato[i].data_de_nascimento);
 
             printf("Obervacoes : %s\n", contato[i].obs);
-
+            
             break;
         }
     }
@@ -217,7 +223,67 @@ void buscar() // verifica se existe o nome/nome iguais, se estiver imprimi os da
     {
         printf("Contato nao encontrado!\n");
         printf("Confira os dados no listar, para relizar a busca corretamente!\n\n");
+
     }
-    printf("Pressione [0] e depois o [Enter] para retornar ao menu:\n");
+    printf("Pressione [0] e depois o [Enter] para retornar ao menu:\n");//* pedir para o usuraio retornar
     scanf("%i", &voltar);
+  
+}
+
+void alterar() // localizando pelo o codigo já cadastrdo e fazendo as alterações 
+{
+    int CodAlterar , voltar;
+
+    printf(" ________________________________________________________________________________\n");
+    printf("|                                                                                |\n");
+    printf("|                                 ALTERAR                                        |\n");
+    printf("|________________________________________________________________________________|\n\n");
+
+    printf("Inoforme o codigo, para alterarmos os dados:");
+    scanf("%d" , &CodAlterar);
+
+    for (i = 0; i < Tamanho_Vetor_Pessoa; i++ )
+    {
+        if (CodAlterar == contato[i].codigo )//strcmp faz a comparação da strings
+        {
+            do
+            {
+                printf("Digite codigo:");
+                scanf("%d", &contato[i].codigo);
+            } while (contato[i].codigo < 0);
+
+            printf("Digite o nome completo:");
+            scanf("%s", contato[i].nome_completo);
+
+            printf("Digite o telefone:");
+            scanf("%s", contato[i].telefone);
+
+            printf("Digite o email:");
+            scanf("%s", contato[i].email);
+
+            printf("Digite o data de nascimento:");
+            scanf("%s", contato[i].data_de_nascimento);
+
+            printf("Digite a observacao:");
+            scanf("%s", contato[i].obs);
+            break;
+
+        }
+    }
+
+    if (i == Tamanho_Vetor_Pessoa)
+    {
+        printf("Contato nao encontrado!\n");
+        printf("Confira os dados no listar, para relizar a busca corretamente!\n\n");
+
+    }else
+    {
+        printf("\nAlteracao Realizada com Sucesso!!!\n\n");
+    }
+
+    printf("Pressione [0] e depois o [Enter] para retornar ao menu:\n");//* pedir para o usuraio retornar
+    scanf("%i", &voltar);
+
+
+
 }
