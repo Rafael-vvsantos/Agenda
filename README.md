@@ -5,3 +5,4 @@
 25/03 - terceira entrega: funcionalidade de busca 
 
 31/03 - quarta entrega: funcionalidade de alateção dos dados do contato.
+08/04 - quinta entrega: funcionalidade de excluir o contato.
